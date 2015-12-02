@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>一次就好</string>
+		<key>singer</key>
+		<string>杨宗纬</string>
+		<key>filename</key>
+		<string>一次就好.mp3</string>
+		<key>image</key>
+		<string>杨宗纬.jpg</string>
+		<key>lrcname</key>
+		<string>一次就好</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>大梦想家</string>
+		<key>singer</key>
+		<string>TFboys</string>
+		<key>filename</key>
+		<string>大梦想家.mp3</string>
+		<key>image</key>
+		<string>TFboys.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>偏偏喜欢你</string>
+		<key>singer</key>
+		<string>陈百强</string>
+		<key>filename</key>
+		<string>偏偏喜欢你.mp3</string>
+		<key>image</key>
+		<string>陈百强.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>4 Walls</string>
+		<key>singer</key>
+		<string>f(x)</string>
+		<key>filename</key>
+		<string>4 Walls.mp3</string>
+		<key>image</key>
+		<string>f(x).jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>演员</string>
+		<key>singer</key>
+		<string>薛之谦</string>
+		<key>filename</key>
+		<string>演员.mp3</string>
+		<key>image</key>
+		<string>薛之谦.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>诺言</string>
+		<key>singer</key>
+		<string>鹿晗</string>
+		<key>filename</key>
+		<string>诺言.mp3</string>
+		<key>image</key>
+		<string>鹿晗.jpg</string>
+	</dict>
+</array>
+</plist>
