@@ -14,6 +14,8 @@
 @property (nonatomic,strong) NSString *singer;
 @property (nonatomic,strong) NSString *filename;
 @property (nonatomic,strong) NSString *image;
+@property (nonatomic,strong) NSString *album;
+@property (nonatomic,strong) NSString *lrcname;
 
 + (instancetype)musicWithDict:(NSDictionary *)dict;
 

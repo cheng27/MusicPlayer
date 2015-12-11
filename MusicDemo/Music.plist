@@ -11,8 +11,10 @@
 		<string>一次就好.mp3</string>
 		<key>image</key>
 		<string>杨宗纬.jpg</string>
+		<key>album</key>
+		<string>杨.jpg</string>
 		<key>lrcname</key>
-		<string>一次就好</string>
+		<string>一次就好.lrc</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -23,6 +25,8 @@
 		<string>大梦想家.mp3</string>
 		<key>image</key>
 		<string>TFboys.jpg</string>
+		<key>album</key>
+		<string>千玺.jpg</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -33,6 +37,8 @@
 		<string>偏偏喜欢你.mp3</string>
 		<key>image</key>
 		<string>陈百强.jpg</string>
+		<key>album</key>
+		<string>chen.jpg</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -43,16 +49,8 @@
 		<string>4 Walls.mp3</string>
 		<key>image</key>
 		<string>f(x).jpg</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>演员</string>
-		<key>singer</key>
-		<string>薛之谦</string>
-		<key>filename</key>
-		<string>演员.mp3</string>
-		<key>image</key>
-		<string>薛之谦.jpg</string>
+		<key>album</key>
+		<string>宋茜.jpg</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -63,6 +61,20 @@
 		<string>诺言.mp3</string>
 		<key>image</key>
 		<string>鹿晗.jpg</string>
+		<key>album</key>
+		<string>luhan.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>演员</string>
+		<key>singer</key>
+		<string>薛之谦</string>
+		<key>filename</key>
+		<string>演员.mp3</string>
+		<key>image</key>
+		<string>薛之谦.jpg</string>
+		<key>album</key>
+		<string>薛.jpg</string>
 	</dict>
 </array>
 </plist>

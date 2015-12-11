@@ -8,6 +8,7 @@
 
 #import "GuideViewController.h"
 #import "CYJPlayingViewController.h"
+#import "CYJMusicList.h"
 
 @interface GuideViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIPageControl *pageControl;
@@ -62,13 +63,13 @@
 }
 - (void)btnClick
 {
-//    CYJPlayingViewController *playVC=[[CYJPlayingViewController alloc] init];
-//    [playVC updateUI];
-    UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    CYJPlayingViewController *playVC=[story instantiateViewControllerWithIdentifier:@"music"];
+
+//    UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    CYJPlayingViewController *playVC=[story instantiateViewControllerWithIdentifier:@"music"];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    CYJMusicList *list = [story instantiateViewControllerWithIdentifier:@"musicList"];
     
-    [self presentViewController:playVC animated:YES completion:nil];
-    //[self.navigationController pushViewController:playMusicVC animated:YES];
+    [self presentViewController:list animated:YES completion:nil];
 }
 
 - (void)createPageControl

@@ -13,11 +13,11 @@
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
     if (self=[super init]) {
-        _name=dict[@"name"];
-        _singer=dict[@"singer"];
-        _filename=dict[@"filename"];
-        _image=dict[@"image"];
-        //[self setValuesForKeysWithDictionary:dict];
+//        _name=dict[@"name"];
+//        _singer=dict[@"singer"];
+//        _filename=dict[@"filename"];
+//        _image=dict[@"image"];
+        [self setValuesForKeysWithDictionary:dict];
         
         
     }

@@ -9,11 +9,15 @@
 #import "CYJPlayingViewController.h"
 #import "CYJMusic.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CYJMusicList.h"
+#import "CYJLrcView.h"
 
 
 @interface CYJPlayingViewController ()<AVAudioPlayerDelegate>
 @property (nonatomic,strong)AVAudioPlayer *audioPlayer;
+//播放进度的定时器
 @property (nonatomic,strong)NSTimer *timer;
+@property (nonatomic,strong) CYJMusic *playMusic;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -31,13 +35,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *latestBtn;
 //下一首
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+//显示歌词的view
+@property (weak, nonatomic) IBOutlet CYJLrcView *lrcView;
+//歌词显示的定时器
+@property (nonatomic,strong) CADisplayLink *lrcTime;
 
 
-@property (nonatomic,strong) NSArray *models;
+
+//@property (nonatomic,strong) NSArray *models;
 //声明一个变量来判断是在播放还是暂停的状态
 @property (nonatomic)int flag;
 //数组的下标
-@property (nonatomic) NSInteger index;
+//@property (nonatomic) NSInteger index;
 
 @end
 
@@ -50,25 +59,10 @@
     _slider.value=0;
     [self updateUI];
     [self.audioPlayer pause];
+    self.clickCellAction();
     
 }
 
-//懒加载数据
-- (NSArray *)models
-{
-    if (_models==nil) {
-        NSString *path=[[NSBundle mainBundle] pathForResource:@"Music" ofType:@"plist"];
-        NSArray *array=[NSArray arrayWithContentsOfFile:path];
-        NSMutableArray *mtarr=[NSMutableArray array];
-        
-        for (NSDictionary *dict in array) {
-            CYJMusic *music=[CYJMusic musicWithDict:dict];
-            [mtarr addObject:music];
-        }
-        _models=mtarr;
-    }
-    return _models;
-}
 
 - (IBAction)btnClick:(UIButton *)sender {
     switch (sender.tag) {
@@ -140,12 +134,14 @@
 //更新界面
 - (void)updateUI
 {
+    [self addLrcTime];
     //循环播放歌曲
     if (_index>self.models.count-1) {
         _index=0;
     }
     
     CYJMusic *music=self.models[_index];
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:music.filename ofType:nil];
     _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:nil];
     
@@ -162,6 +158,8 @@
     _songName.text=music.name;
     //更改singer的文本
     _singer.text=music.singer;
+    //切换歌词
+    self.lrcView.lrcname = self.playMusic.lrcname;
     
     //监听slider的值
     self.timer=[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateSlider) userInfo:nil repeats:YES];
@@ -182,6 +180,18 @@
     NSInteger min=time/60;
     NSInteger second=(NSInteger)time%60;
     return [NSString stringWithFormat:@"%02ld:%02ld",min,second];
+}
+- (IBAction)lrcOrPic:(UIButton *)sender {
+    if (self.lrcView.isHidden) {//显示歌词，覆盖图片
+        self.lrcView.hidden = NO;
+        sender.selected = YES;
+    }else
+    {//隐藏歌词，显示图片
+        self.lrcView.hidden = YES;
+        sender.selected = NO;
+        
+        [self removeLrcTime];
+    }
 }
 
 #pragma mark - 1.音乐播放器的创建  2.播放音乐  3.暂停音乐
@@ -226,7 +236,7 @@
         self.timer.fireDate=[NSDate distantPast];
     }
 }
-#pragma mark - 1.定时器的创建 2.进度条的更新 3.当前时间的更新
+#pragma mark - 1.播放进度定时器的创建 2.进度条的更新 3.当前时间的更新
 - (NSTimer *)timer
 {
     if (_timer==nil) {
@@ -278,8 +288,29 @@
     self.slider.value = currentTime/self.audioPlayer.duration;
     
 }
+#pragma mark - 1.歌词定时器的创建 2.移除定时器 3.更新歌词
+- (void)addLrcTime
+{
+    if (self.audioPlayer.isPlaying == NO || self.lrcView.hidden) {
+        return;
+    }
+    [self removeLrcTime];
+    //保证定时器的工作是及时的
+    [self updateLrc];
+    
+    self.lrcTime = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrc)];
+    [self.lrcTime addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+- (void)removeLrcTime
+{
+    [self.lrcTime invalidate];
+    self.lrcTime = nil;
+}
 
-
+- (void)updateLrc
+{
+    self.lrcView.currentTime = (int)self.audioPlayer.currentTime;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

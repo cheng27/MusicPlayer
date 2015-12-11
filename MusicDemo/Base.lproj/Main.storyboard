@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9UY-3S-OHF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9UY-3S-OHF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -23,6 +24,35 @@
             </objects>
             <point key="canvasLocation" x="173.5" y="443.5"/>
         </scene>
+        <!--Music List-->
+        <scene sceneID="QTH-ZL-Mdg">
+            <objects>
+                <tableViewController storyboardIdentifier="musicList" id="IEb-lN-lbb" customClass="CYJMusicList" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="STS-Oa-lXv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aGw-Hq-Z3N">
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aGw-Hq-Z3N" id="c92-x9-5eu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IEb-lN-lbb" id="8u5-rG-dzV"/>
+                            <outlet property="delegate" destination="IEb-lN-lbb" id="uku-Fq-SDU"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOq-B7-nQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="571.5" y="443.5"/>
+        </scene>
         <!--Playing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -36,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Cb-VG-lEh">
-                                <rect key="frame" x="-2" y="28" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wPq-MS-uTm">
                                 <rect key="frame" x="0.0" y="528" width="375" height="31"/>
@@ -75,12 +105,6 @@
                                     <action selector="btnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2kw-3b-7Sh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i0-uq-8mr">
-                                <rect key="frame" x="0.0" y="488" width="94" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhY-cy-jhv">
                                 <rect key="frame" x="317" y="546" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -93,11 +117,25 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i0-uq-8mr">
+                                <rect key="frame" x="0.0" y="488" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24I-zo-CXf" customClass="CYJLrcView">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vku-Sg-XAk">
-                                <rect key="frame" x="326" y="583" width="32" height="32"/>
+                                <rect key="frame" x="326" y="79" width="32" height="32"/>
                                 <state key="normal" image="歌词.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="iconfont-tupian.png"/>
+                                <connections>
+                                    <action selector="lrcOrPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0E6-YS-cGC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -108,6 +146,7 @@
                         <outlet property="currentTime" destination="eRh-Ia-WbO" id="9eg-Br-Fpm"/>
                         <outlet property="imgView" destination="0Cb-VG-lEh" id="oe7-xu-5M1"/>
                         <outlet property="latestBtn" destination="4eY-T3-GEe" id="813-vZ-r0A"/>
+                        <outlet property="lrcView" destination="24I-zo-CXf" id="iZu-pf-5o5"/>
                         <outlet property="nextBtn" destination="Jad-Hw-eXA" id="h6b-IU-jeX"/>
                         <outlet property="playOrPause" destination="r2M-3d-A59" id="FNq-Jk-A2M"/>
                         <outlet property="singer" destination="ttd-F0-9Gz" id="O1j-Rq-QcK"/>
@@ -118,10 +157,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659.5" y="443.5"/>
+            <point key="canvasLocation" x="967.5" y="443.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="iconfont-tupian.png" width="32" height="32"/>
         <image name="上一首1.png" width="32" height="32"/>
         <image name="下一首1.png" width="32" height="32"/>
         <image name="播放1.png" width="64" height="64"/>
